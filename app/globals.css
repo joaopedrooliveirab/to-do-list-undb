@@ -24,3 +24,126 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.input-tarefa {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #ededed;
+  outline: none;
+  transition: all 0.2s ease;
+  font-size: 16px;
+  width: 300px;
+}
+
+.input-tarefa:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.02);
+}
+
+.input-tarefa::placeholder {
+  color: #666;
+}
+
+.btn-adicionar {
+  margin-left: 10px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  background-color: #ededed;
+  color: #0a0a0a;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.btn-adicionar:hover {
+  opacity: 0.9;
+}
+
+/* Barra de Progresso */
+.progress-container {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.progress-bar-bg {
+  background: #333;
+  height: 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  background: #3498db; /* Cor da barra */
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+/* Filtros de Categoria */
+.category-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.filter-btn {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #666;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.filter-btn.active {
+  background: rgba(52, 152, 219, 0.2);
+  border-color: #3498db;
+  color: #3498db;
+}
+
+/* Estilo de tarefa concluída */
+.task-text.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+
+/* Adicione isso ao seu globals.css */
+
+.task-card {
+  background: white; /* Cor de destaque para o card */
+  border-radius: 12px;
+  padding: 16px;
+  display: flex; /* Alinha checkbox e texto na mesma linha */
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: #1a1d1e; /* Texto escuro para ler dentro do card branco */
+}
+
+.task-details {
+  display: flex;
+  flex-direction: column; /* Data embaixo do texto */
+}
+
+.task-date {
+  font-size: 11px;
+  color: #999;
+}
+
+/* Ajuste o container de progresso para ser branco também se quiser igual à foto */
+.progress-container {
+  background: white;
+  color: #1a1d1e;
+}
