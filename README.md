@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## MeuHub - To-Do List (Next.js + TypeScript + Supabase)
 
-## Getting Started
+🎉 Bem-vindo ao MeuHub: um app de produtividade focado em Dark Mode, alto contraste e gerenciamento de tarefas por categoria. A seguir está a documentação do projeto com setup, recursos e roadmap.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🌟 Sobre
+
+**MeuHub** é um app de lista de tarefas moderno e leve, construído com:
+
+- **Next.js** (App Router, SSR/SSG, roteamento built-in)
+- **TypeScript** (tipagem forte e DX segura)
+- **Supabase** (Autenticação + Banco PostgreSQL)
+- **Design Dark Mode** com cards brancos de alto contraste
+- Filtros de categoria (Ex.: Estudos, Corrida, Trabalho, Pessoal)
+
+O objetivo é ajudar o usuário a organizar tarefas com foco e rapidez, usando uma UI responsiva e acessível.
+
+---
+
+## 🛠️ Tecnologias
+
+- `next` (Next.js 14+)
+- `react`
+- `typescript`
+- `supabase-js`
+- `tailwindcss` (ou CSS Modules / PostCSS, conforme configuração)
+- `eslint`, `prettier` para qualidade de código
+- `vitest` ou `jest` (opcional, testes unitários)
+
+---
+
+## ✅ Funcionalidades
+
+- Autenticação de usuários (Supabase Auth)
+  - Cadastro/login com email e senha
+  - Sessão persistente
+- CRUD de tarefas
+  - Criar, editar, excluir tarefas
+  - Marcar como concluída
+  - Título, descrição e data de vencimento
+- Filtros de categoria
+  - Estudos, Corrida, Trabalho, Pessoal, etc
+  - Filtros dinamicos por tag
+- Prioridade e status
+  - Prioridade: Alto / Médio / Baixo
+  - Status: Pendente / Em andamento / Concluído
+- Dark Mode
+  - Tema escuro padrão com cards brancos de alto contraste
+  - Alternância para modo claro (se implementado)
+- UI/UX
+  - Layout responsivo (mobile e desktop)
+  - Acessibilidade (contraste, foco de teclado, semântica)
+
+---
+
+## 🚀 Como rodar localmente
+
+1. Clonar repositório
+   - `git clone https://github.com/seu-user/meuhub.git`
+   - `cd meuhub`
+2. Instalar dependências
+   - `npm install` ou `yarn`
+3. Configurar variáveis de ambiente (ver seção abaixo)
+4. Executar em desenvolvimento
+   - `npm run dev` ou `yarn dev`
+5. Acessar
+   - `http://localhost:3000`
+
+---
+
+## 🔐 Variáveis de ambiente do Supabase
+
+Crie o arquivo `.env.local` na raiz do projeto com:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://<seu-projeto>.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=pk.<sua-anon-key>
+SUPABASE_SERVICE_ROLE_KEY=sk.<sua-service-role-key> # apenas backend
+NEXT_PUBLIC_APP_NAME=MeuHub
+NEXT_PUBLIC_DEFAULT_THEME=dark
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `NEXT_PUBLIC_SUPABASE_URL`: URL do seu projeto Supabase
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`: chave pública client-side
+- `SUPABASE_SERVICE_ROLE_KEY`: chave secreta (não expor no frontend)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Supabase - estrutura recomendada:
+- Tabela `todos` com campos: `id` (uuid, PK), `user_id` (UUID), `title`, `description`, `category`, `priority`, `due_date`, `completed`, `created_at`.
+- Regras RLS (Row Level Security): apenas o proprietário pode ler/gravar suas tarefas.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📌 Estrutura de pastas
 
-To learn more about Next.js, take a look at the following resources:
+- `app/` (rotas + páginas)
+- `components/` (TaskCard, FilterBar, Modal etc.)
+- `lib/supabaseClient.ts`
+- `hooks/` (`useTheme`, `useTasks`)
+- `styles/globals.css`
+- `types/` (`task.ts`, `user.ts`)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🧪 Qualidade e testes
 
-## Deploy on Vercel
+- `npm run lint`
+- `npm run format`
+- `npm run build`
+- (opcional) testes unitários com `vitest` ou `jest`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📣 Contato
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Autor: João Pedro Oliveira
+- GitHub: `https://github.com/joaopedrooliveirab`
+
+---
